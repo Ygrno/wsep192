@@ -4,12 +4,12 @@ using System.Text;
 
 namespace ServiceLayer
 {
-    class Customer
+    class Costumer
     {
         private List<Cart> carts;
         private User currentState;
 
-        public Customer(User state)
+        public Costumer(User state)
         {
             carts = new List<Cart>();
             this.currentState = state;
@@ -17,7 +17,6 @@ namespace ServiceLayer
 
         public void searchProduct()
         {
-            
 
         }
 

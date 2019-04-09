@@ -9,8 +9,8 @@ namespace ServiceLayer
         static void Main(string[] args)
         {
 
-            //This is a start of UI example. we don't need this in version 1.
-
+            //This is a s*tart of UI example. we don't need this in version 1.
+            /*
             System system = new System();
             Console.WriteLine("Welcome to the Market System!");
             Console.WriteLine("In order to use the system for the first time, an admin must be created.");
@@ -39,6 +39,8 @@ namespace ServiceLayer
 
 
             Console.ReadLine();
+            */
         }
+
     }
 }

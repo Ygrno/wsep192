@@ -21,6 +21,11 @@ namespace ServiceLayer
             return name;
         }
 
+        public String getUserName()
+        {
+            return this.user_name;
+        }
+
         public void logOut()
         {
 

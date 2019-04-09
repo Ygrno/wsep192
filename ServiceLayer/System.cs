@@ -7,24 +7,52 @@ using BussinessLayer.UsersManagment;
 
 namespace ServiceLayer
 {
-    class System
+    public class System
     {
-        private bool initialized = false;
-        private List<Customer> customers;
+        private static System sys;
+        public bool initialized = false;
+        private List<Costumer> costumers;
         private bool signedin = false;
         private Guest global_guest;
 
 
-        public System()
+        private System(string userName, string password)
         {
-            customers = new List<Customer>();
+            costumers = new List<Costumer>();
             createGuest();
+            Console.WriteLine("Connecting to External systems ...");
+            connectExternalSystems();
+            Console.WriteLine("Welcome to the Market System!");
+            Console.WriteLine("In order to use the system for the first time, an admin must be created.");
+            this.register(userName, password);
+
         }
 
-        public void register()
+        private void connectExternalSystems()
         {
-            global_guest.register(customers, initialized);
-            initialized = true;
+
+            Console.WriteLine("Connection to external systems succeeded!");
+
+
+        }
+
+        public static System initialize(string userName, string password)
+        {
+            if (sys == null) sys = new System(userName, password);
+
+
+            return sys;
+        }
+
+        public bool register(string userName, string password)
+        {
+            if (global_guest.register(costumers, initialized, userName, password))
+            {
+                initialized = true;
+                return true;
+            }
+
+            return false;
         }
 
         public void createGuest()
@@ -42,7 +70,11 @@ namespace ServiceLayer
 
 
             }
+        }
 
+        public static void Reset()
+        {
+            sys = null;
         }
 
 

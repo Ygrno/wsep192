@@ -6,7 +6,7 @@ namespace ServiceLayer
 {
     class Admin : User
     {
-        public Admin(string user_name, string password) : base(user_name, password)
+        public Admin(string userName, string password) : base(userName, password)
         {
 
         }

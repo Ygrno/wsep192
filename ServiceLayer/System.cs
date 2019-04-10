@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 using System.Threading;
 using BussinessLayer.Market;
@@ -340,7 +341,7 @@ String pass = Console.ReadLine();
             return false;
         }
 
-        public bool checkAvailabilityOfProduct(Product P, Store S)
+        public static bool checkAvailabilityOfProduct(Product P, Store S)
         {
             if (S.products.Contains(P)) return true;
 

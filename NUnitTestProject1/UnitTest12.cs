@@ -141,6 +141,17 @@ namespace Tests
         }
 
         [Test]
+        public void checkAvailability()//use case 2.8
+        {
+            ServiceLayer.System.initialize("moti", "123456");
+            Product b = new Product("banana",6,"A");
+            Store A = new Store(3,"A","default");
+            A.products.Add(b);
+            ServiceLayer.System.stores.Add(A);
+            Assert.AreEqual(ServiceLayer.System.checkAvailabilityOfProduct(b, A),true);
+        }
+
+        [Test]
         public void BuyingProcess()//use case 2.8
         {
             ServiceLayer.System sys = (ServiceLayer.System.initialize("moti", "123456"));

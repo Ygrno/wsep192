@@ -6,51 +6,78 @@ namespace ServiceLayer
 {
     class StoreOwner : User
     {
-        private int storeID;
+        protected List<Store> stores;
+        protected List<string> children;
 
         public StoreOwner(string user_name, string password) : base(user_name, password)
         {
+            stores = new List<Store>();
         }
 
-        public void setStore(int storeID)
+        public virtual bool addStore(Store store)
         {
-            this.storeID = storeID;
+            if (stores.Contains(store))
+                return false;
+            stores.Add(store);
+            return true;
         }
 
-        public int getStore()
+        public List<Store> getStores()
         {
-            return this.storeID;
+            return stores;
         }
 
-        public void addProduct()
+        public virtual bool addProduct(Product p, Store store)
         {
-
+            if (!stores.Contains(store) || store.getProducts().Contains(p))
+                return false;
+            store.getProducts().Add(p);
+            return true;
         }
 
-        public void deleteProduct()
+        public virtual bool deleteProduct(Product p, Store store)
         {
-
+            if (!stores.Contains(store) || !store.getProducts().Contains(p))
+                return false;
+            store.getProducts().Remove(p);
+            return true;
         }
 
-        public void editProduct()
+        public virtual bool editProduct(Product p, Store store, Product newProd)
         {
-
+            if (!stores.Contains(store) || !store.getProducts().Contains(p))
+                return false;
+            store.getProducts().Remove(p);
+            store.getProducts().Add(newProd);
+            return true;
         }
 
-        public void addStoreOwner()
+        public virtual bool addStoreOwner(Store store, string customerName)
         {
-
+            if (store.getStoreOwners().Contains(customerName))
+                return false;
+            store.getStoreOwners().Add(customerName);
+            return true;
         }
 
-        public void addStoreManager()
+        public virtual bool addStoreManager(Store store, string customerName)
         {
-
+            if (store.getStoreOwners().Contains(customerName))
+                return false;
+            store.getStoreOwners().Add(customerName);
+            return true;
         }
 
-        public void removeStoreOwner()
+        public virtual bool removeStoreOwner(Store store, string customerName)
         {
-
+            if (!stores.Contains(store))
+                return false;
+            int num = stores.IndexOf(store);
+            stores[num].getStoreOwners().Remove(customerName);
+            return true;
         }
+
+
 
     }
 }

@@ -31,5 +31,14 @@ namespace ServiceLayer
             return this.name;
         }
 
+        public List<Product> getProducts()
+        {
+            return products;
+        }
+
+        public List<string> getStoreOwners()
+        {
+            return storeOwners;
+        }
     }
 }

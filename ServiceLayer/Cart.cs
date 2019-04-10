@@ -4,13 +4,18 @@ using System.Text;
 
 namespace ServiceLayer
 {
-    class Cart
+    public class Cart
     {
         private List<Product> products;
         public Cart()
         {
             products = new List<Product>();
 
+        }
+
+        public List<Product> getProducts()
+        {
+            return this.products;
         }
     }
 }

@@ -4,23 +4,31 @@ using System.Text;
 
 namespace ServiceLayer
 {
-    class Store
+    public class Store
     {
-        private List<Product> products;
+        public List<Product> products;
         private BuyingPolicy buyingPolicy;
         private PurchasePolicy purchasePolicy;
         private SalesPolicy salesPolicy;
         private int storeID;
-        private String name;
-        private List<StoreOwner> storeOwners;
+        public String name;
+        public List<string> storeOwners;
 
-        public Store()
+        public Store(int storeId,string storeName, string storeOwnerName)
         {
             products = new List<Product>();
             buyingPolicy = new BuyingPolicy();
             purchasePolicy = new PurchasePolicy();
             salesPolicy = new SalesPolicy();
-            storeOwners = new List<StoreOwner>();
+            storeOwners = new List<string>();
+            storeOwners.Add(storeOwnerName);
+            storeID = storeId;
+            this.name = storeName;
+        }
+
+        public string getName()
+        {
+            return this.name;
         }
 
     }

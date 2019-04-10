@@ -6,12 +6,12 @@ namespace ServiceLayer
 {
     class Guest
     {
-        public bool register(List<Costumer> costumers, bool initialized, string userName, string password)
+        public bool register(List<Customer> costumers, bool initialized, string userName, string password)
         {
             /*
             Console.WriteLine("Please enter a user name:");
             String user_name = Console.ReadLine();
-            foreach (Costumer c in costumers)
+            foreach (Customer c in costumers)
             {
                 User u = c.getCurrentState();
                 if (u != null && u.getName().Equals(user_name))
@@ -23,9 +23,9 @@ namespace ServiceLayer
             Console.WriteLine("Please enter a Password:");
             String pass = Console.ReadLine();
             */
-            Costumer costumer;
+            Customer customer;
 
-            foreach (Costumer c in costumers)
+            foreach (Customer c in costumers)
             {
                 User u = c.getCurrentState();
                 if (u != null && u.getUserName().Equals(userName))
@@ -52,20 +52,17 @@ namespace ServiceLayer
             if (!initialized)
             {
                 Admin admin = new Admin(userName, password);
-                costumer = new Costumer(admin);
+                customer = new Customer(admin);
             }
             else
             {
                 User user = new User(userName, password);
-                costumer = new Costumer(user);
+                customer = new Customer(user);
             }
-            costumers.Add(costumer);
+            costumers.Add(customer);
             return true;
         }
 
-        public void login()
-        {
 
-        }
     }
 }

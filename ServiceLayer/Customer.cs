@@ -1,17 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace ServiceLayer
 {
-    class Costumer
+    public class Customer
     {
-        private List<Cart> carts;
+        private Cart cart;
         private User currentState;
+        public bool loggedin = false;
 
-        public Costumer(User state)
+        public bool register(string userName, string password)
         {
-            carts = new List<Cart>();
+            System sys = System.getInstance();
+            if (sys == null) return false;
+            else
+            {
+                sys.register(userName,password);
+                return true;
+            }
+
+
+        }
+
+        public Customer(User state)
+        {
+            cart = new Cart();
             this.currentState = state;
         }
 
@@ -40,9 +55,22 @@ namespace ServiceLayer
 
         }
 
+
+        
+
         public User getCurrentState()
         {
             return this.currentState;
+        }
+
+        public Cart getCart()
+        {
+            return this.cart;
+        }
+
+        public void setGuestState()
+        {
+            currentState = null;
         }
 
 

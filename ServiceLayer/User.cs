@@ -4,10 +4,11 @@ using System.Text;
 
 namespace ServiceLayer
 {
-    class User
+    public class User
     {
         private String name;
         private String user_name, password;
+        
 
         public User(String user_name, String password)
         {
@@ -21,9 +22,16 @@ namespace ServiceLayer
             return name;
         }
 
+
+
         public String getUserName()
         {
             return this.user_name;
+        }
+
+        public String getPassword()
+        {
+            return this.password;
         }
 
         public void logOut()
